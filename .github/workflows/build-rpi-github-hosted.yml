@@ -121,7 +121,7 @@ jobs:
         image_type=${{ matrix.image_types }}
         image_type="${image_type,,}"
         partitioning=${{ matrix.partitioning }}
-        partitioning="${{partitioning,,}}"
+        partitioning="${partitioning,,}"
         kickstart="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${image_type}-${partitioning}.aarch64.ks"
         [ "x${kickstart}" != "x" ] && echo "kickstart=${kickstart}" >> $GITHUB_ENV
 
