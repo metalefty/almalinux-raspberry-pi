@@ -57,7 +57,7 @@ on:
 
 jobs:
   build-image:
-    name: AlmaLinux ${{ inputs.version_major }} '${{ matrix.image_types }}' '${{ matrix.image_types }}' image
+    name: AlmaLinux ${{ inputs.version_major }} '${{ matrix.image_types }}' '${{ matrix.partitioning }}' image
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -130,8 +130,8 @@ jobs:
         [ "x${rpi_image_resultdir}" != "x" ] && echo "rpi_image_resultdir=${rpi_image_resultdir}" >> $GITHUB_ENV
 
         # Image file base name
-        image_name="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${ partitioning }-${{ inputs.version_major }}.${version_minor}-${date_stamp}.aarch64"
-        [ "${{ matrix.image_types }}" = "gnome" ] && image_name="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-GNOME-${ partitioning }-${{ inputs.version_major }}.${{ env.version_minor }}-${date_stamp}.aarch64"
+        image_name="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${partitioning}-${{ inputs.version_major }}.${version_minor}-${date_stamp}.aarch64"
+        [ "${{ matrix.image_types }}" = "gnome" ] && image_name="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-GNOME-${partitioning}-${{ inputs.version_major }}.${{ env.version_minor }}-${date_stamp}.aarch64"
         [ "x${image_name}" != "x" ] && echo "image_name=${image_name}" >> $GITHUB_ENV
 
     - name: Install KVM and libvirt packages
