@@ -57,7 +57,7 @@ on:
 
 jobs:
   build-image:
-    name: AlmaLinux ${{ inputs.version_major }} '${{ matrix.image_types }}' '${{ matrix.partitioning }}' image
+    name: AlmaLinux ${{ inputs.version_major }} '${{ matrix.image_types }}' ${{ matrix.partitioning }} image
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -122,7 +122,7 @@ jobs:
         image_type="${image_type,,}"
         partitioning=${{ matrix.partitioning }}
         partitioning="${partitioning,,}"
-        kickstart="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${image_type}-${partitioning}.aarch64.ks"
+        kickstart="kickstart/AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${image_type}-${partitioning}.aarch64.ks"
         [ "x${kickstart}" != "x" ] && echo "kickstart=${kickstart}" >> $GITHUB_ENV
 
         # Appliance Tools results directory
