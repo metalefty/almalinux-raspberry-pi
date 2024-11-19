@@ -122,7 +122,7 @@ jobs:
         image_type="${image_type,,}"
         partitioning=${{ matrix.partitioning }}
         partitioning="${partitioning,,}"
-        kickstart="kickstart/AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${image_type}-${partitioning}.aarch64.ks"
+        kickstart="AlmaLinux-${{ inputs.version_major }}-RaspberryPi-${image_type}-${partitioning}.aarch64.ks"
         [ "x${kickstart}" != "x" ] && echo "kickstart=${kickstart}" >> $GITHUB_ENV
 
         # Appliance Tools results directory
@@ -194,7 +194,7 @@ jobs:
         WORKDIR /
 
         # Copy the RPi kickstart into the container
-        COPY ${{ env.kickstart }} .
+        COPY kickstart/${{ env.kickstart }} .
 
         # Copy the appliance-creator.sh into the container
         COPY appliance-creator.sh .
