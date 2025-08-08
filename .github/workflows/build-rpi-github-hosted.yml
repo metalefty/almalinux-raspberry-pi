@@ -125,7 +125,7 @@ jobs:
         echo "release_str=${release_str}" >> $GITHUB_ENV
 
         # Build 8 on 8, 9 on 9, 10 an 10-kitten on 10
-        container_version=${version_major}
+        container_version=10
         echo "container_version=${container_version}" >> $GITHUB_ENV
 
         # Path to the python3-imgcreate fs.py
