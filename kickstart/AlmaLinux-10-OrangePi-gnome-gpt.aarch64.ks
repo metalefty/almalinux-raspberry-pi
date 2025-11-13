@@ -61,8 +61,8 @@ libgpiod-utils
 cat >/boot/efi/README.txt << EOF
 == AlmaLinux 10 ==
 
-To login to Raspberry Pi via SSH, you need to register SSH public key *before*
-inserting SD card to Raspberry Pi. Edit user-data file and put SSH public key
+To login to your board via SSH, you need to register SSH public key *before*
+inserting SD card to your board. Edit user-data file and put SSH public key
 in the place.
 
 Default SSH username is almalinux.
@@ -75,7 +75,7 @@ touch /boot/efi/meta-data /boot/efi/user-data
 cat >/boot/efi/user-data << "EOF"
 #cloud-config
 #
-# This is default cloud-init config file for AlmaLinux Raspberry Pi image.
+# This is default cloud-init config file for AlmaLinux SBC image.
 #
 # If you want additional customization, refer to cloud-init documentation and
 # examples. Please note configurations written in this file will be usually
