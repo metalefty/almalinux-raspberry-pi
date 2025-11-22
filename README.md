@@ -13,7 +13,8 @@ Images made possible by the incredible work contributed by the immortal [Pablo G
 |Model |8|9|Kitten 10|10|
 |-|-|-|-|-|
 |Pi 5|✓|✓|✓|✓|
-|Pi 500|?|?|?|?|
+|Pi 500|?|✓|✓|✓|
+|Pi 500+|?|✓|✓|✓|
 |Pi 4 Model B|✓|✓|✓|✓|
 |Pi 400|✓|✓|✓|✓|
 |Pi 3 Model B+|✓|✓|⛔|⛔|
