@@ -160,6 +160,9 @@ jobs:
           # 10-kitten has no MBR image
           - version_major: '10-kitten'
             partitioning: 'mbr'
+          # 10 has no MBR image
+          - version_major: '10'
+            partitioning: 'mbr'
 
     steps:
 
