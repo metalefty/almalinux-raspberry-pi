@@ -10,14 +10,14 @@ repo --name="temp-build" --baseurl="https://build.almalinux.org/pulp/content/bui
 
 # install
 keyboard us --xlayouts=us --vckeymap=us
-timezone --utc UTC
+timezone --utc Asia/Tokyo
 selinux --enforcing
 firewall --enabled --port=22:tcp
 network --bootproto=dhcp --device=link --activate --onboot=on
 services --enabled=sshd,NetworkManager,chronyd,bluetooth,cpupower
 shutdown
 bootloader --location=none
-lang en_US.UTF-8
+lang ja_JP.UTF-8
 
 # Disk setup
 clearpart --initlabel --all --disklabel=gpt
@@ -31,6 +31,7 @@ part / --fstype=ext4 --size=4096 --label=rootfs --ondisk=sda
 @gnome-desktop
 firefox
 default-fonts
+langpacks-ja
 -caribou*
 -gnome-shell-browser-plugin
 -java-1.6.0-*
@@ -111,8 +112,8 @@ rm -f /etc/sysconfig/network-scripts/ifcfg-link
 # rebuild dnf cache
 dnf clean all
 /bin/date +%Y%m%d_%H%M > /etc/BUILDTIME
-echo '%_install_langs C.utf8' > /etc/rpm/macros.image-language-conf
-echo 'LANG="C.utf8"' >  /etc/locale.conf
+#echo '%_install_langs C.utf8' > /etc/rpm/macros.image-language-conf
+#echo 'LANG="C.utf8"' >  /etc/locale.conf
 rpm --rebuilddb
 
 # Remove machine-id on pre generated images
@@ -121,6 +122,20 @@ touch /etc/machine-id
 
 # auto relabel SELinux
 touch /.autorelabel
+
+# Disable automatic suspend
+cat > /etc/dconf/db/local.d/00-disable-automatic-suspend << EOF
+[org/gnome/desktop/session]
+idle-delay=0
+
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-type='nothing'
+
+[org/gnome/desktop/screensaver]
+lock-enabled=false
+EOF
+dconf update
 %end
 
 %post --erroronfail 
