@@ -45,6 +45,9 @@ cloud-init
 cloud-utils-growpart
 e2fsprogs
 net-tools
+-*-firmware
+brcmfmac-firmware
+linux-firmware
 linux-firmware-raspberrypi
 #linux-firmware-raspberrypi-rpi3
 raspberrypi-sys-mods
